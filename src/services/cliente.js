@@ -4,7 +4,7 @@ const repositorio = new RepositorieExercicio()
 
 class ServicoExercicio {
     
-    VerficarCliente(cliente) {
+    VerificarCliente(cliente) {
         if(!cliente){
             throw new Error('Não foi enviada o cliente para adicionar');
         } else if(!cliente.nome){
@@ -23,7 +23,7 @@ class ServicoExercicio {
     }
 
     async Add(cliente, transaction) {
-        this.VerficarCliente(cliente)
+        this.VerificarCliente(cliente)
 
         return repositorio.Add(cliente, transaction);
     }
@@ -32,7 +32,7 @@ class ServicoExercicio {
         if(!id) {
             throw new Error('Não foi enviada o identificador do cliente para alterar');
         } 
-        this.VerficarCliente(cliente)
+        this.VerificarCliente(cliente)
 
         return repositorio.Update(id, cliente);
     }

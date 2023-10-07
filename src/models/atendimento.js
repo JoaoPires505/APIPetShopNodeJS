@@ -4,7 +4,7 @@ const conexao = require('../database.js')
 
  
 
-const Cachorros = conexao.define('cachorros', {
+const Atendimento = conexao.define('atendimento', {
 
     id: {
 
@@ -18,9 +18,24 @@ const Cachorros = conexao.define('cachorros', {
 
     },
 
-    nome: {
+    diahora: {
 
         type: DataTypes.STRING,
+
+        allowNull: false
+
+    },
+
+    valor: {
+
+        type: DataTypes.INTEGER,
+
+        allowNull: false
+
+    },
+    concluido: {
+
+        type: DataTypes.BOOLEAN,
 
         allowNull: false
 
@@ -36,4 +51,4 @@ const Cachorros = conexao.define('cachorros', {
 
  
 
-module.exports = Cachorros;
+module.exports = Atendimento;

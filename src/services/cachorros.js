@@ -1,13 +1,13 @@
-const RepositorieExercicio = require("../repositories/cachorro");
+const RepositorieExercicio = require("../repositories/cachorros");
 
 const repositorio = new RepositorieExercicio()
 
 class ServicoExercicio {
     
-    VerficarCachorro(cachorro) {
-        if(!cachorro){
+    VerficarCachorro(cachorros) {
+        if(!cachorros){
             throw new Error('Não foi enviada o cachorro para adicionar');
-        } else if(!cachorro.nome){
+        } else if(!cachorros.nome){
             throw new Error('Não foi enviado o nome da cachorro');
         }
 
@@ -22,17 +22,17 @@ class ServicoExercicio {
         return repositorio.PegarTodos();
     }
 
-    async Add(cachorro, transaction) {
-        this.VerficarCachorro(cachorro)
+    async Add(cachorros, transaction) {
+        this.VerificarCachorro(cachorros)
 
-        return repositorio.Add(cachorro, transaction);
+        return repositorio.Add(cachorros, transaction);
     }
 
     async Update(id, cachorro) {
         if(!id) {
             throw new Error('Não foi enviada o identificador do cachorro para alterar');
         } 
-        this.VerficarCachorro(cachorro)
+        this.VerificarCachorro(cachorro)
 
         return repositorio.Update(id, cachorro);
     }
