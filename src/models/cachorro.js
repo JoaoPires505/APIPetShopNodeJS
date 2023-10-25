@@ -1,21 +1,13 @@
 const { DataTypes } = require('sequelize')
 const conexao = require('../database.js')
 
-const Atendimento = conexao.define('Atendimentos', {
+const Cachorro = conexao.define('Cachorros', {
     id: {
         primaryKey: true,
         autoIncrement: true,
         type: DataTypes.INTEGER
     },
-    data: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    hora: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    concluido: {
+    nome: {
         type: DataTypes.STRING,
         allowNull: false
     },
@@ -24,5 +16,5 @@ const Atendimento = conexao.define('Atendimentos', {
     updatedAt: false
 })
 
-module.exports = Atendimento
+module.exports = Cachorro
 

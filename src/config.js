@@ -1,11 +1,9 @@
-require('dotenv').config()
-
 module.exports = {
     development: {
         username: 'root',
-        password:  '',
+        password: '',
         database: 'petshop',
         host: 'localhost',
         dialect: 'mysql'
-    },
-};
+    }
+    }

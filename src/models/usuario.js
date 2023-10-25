@@ -1,21 +1,26 @@
 const { DataTypes } = require('sequelize')
 const conexao = require('../database.js')
 
-const Atendimento = conexao.define('Atendimentos', {
+const Usuario = conexao.define('usuarios', {
+    async Adicionar(usuario){
+        const senha = await bcrypt.hash(usuario,senha, 10)
+        
+        return Usuario.create({...usuario, senha })
+    },
     id: {
         primaryKey: true,
         autoIncrement: true,
         type: DataTypes.INTEGER
     },
-    data: {
+    email: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    hora: {
+    senha: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    concluido: {
+    permissao: {
         type: DataTypes.STRING,
         allowNull: false
     },
@@ -24,5 +29,5 @@ const Atendimento = conexao.define('Atendimentos', {
     updatedAt: false
 })
 
-module.exports = Atendimento
+module.exports = Usuario
 

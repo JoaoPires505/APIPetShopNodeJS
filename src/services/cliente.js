@@ -1,15 +1,17 @@
-const RepositorieExercicio = require("../repositories/clientes");
+const RepositorieClientes = require("../repositories/cliente.js");
 
-const repositorio = new RepositorieExercicio()
+const repositorio = new RepositorieClientes()
 
-class ServicoExercicio {
+class ServicoClientes {
     
-    VerificarCliente(cliente) {
+    VerficarCliente(cliente) {
         if(!cliente){
-            throw new Error('Não foi enviada o cliente para adicionar');
+            throw new Error('Não foi enviada a cliente para adicionar');
         } else if(!cliente.nome){
             throw new Error('Não foi enviado o nome da cliente');
-        }
+        } else if(!cliente.telefone){
+            throw new Error('Não foi enviado o telefone da cliente');
+        } 
 
         return true
     }
@@ -23,16 +25,16 @@ class ServicoExercicio {
     }
 
     async Add(cliente, transaction) {
-        this.VerificarCliente(cliente)
+        this.VerficarCliente(cliente)
 
         return repositorio.Add(cliente, transaction);
     }
 
     async Update(id, cliente) {
         if(!id) {
-            throw new Error('Não foi enviada o identificador do cliente para alterar');
+            throw new Error('Não foi enviada o identificador da cliente para alterar');
         } 
-        this.VerificarCliente(cliente)
+        this.VerficarCliente(cliente)
 
         return repositorio.Update(id, cliente);
     }
@@ -43,4 +45,4 @@ class ServicoExercicio {
 
 } 
 
-module.exports = ServicoExercicio
+module.exports = ServicoClientes

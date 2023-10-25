@@ -1,28 +1,26 @@
-const Clientes = require('../models/clientes.js');
-const Cachorros = require('../models/cachorros.js')
-const Atendimento = require('../models/atendimento.js')
+const atendimento = require('../models/atendimento.js')
 
-class RepositorieExercicio {
+class RepositorieAtendimentos {
 
     async PegarUm(id, transaction) {
-        return Atendimento.findOne({
+        return atendimento.findOne({
             where: { id },
             transaction
         });
     }
     
     async PegarTodos() {
-        return Atendimento.findAll();
+        return atendimento.findAll();
     }
 
     async Add(atendimento, transaction) {
-        const result = await Atendimento.create(atendimento, { transaction })
+        const result = await atendimento.create(atendimento, { transaction })
 
         return result
     }
 
     async Update(id, atendimento) {
-        const result = await Atendimento.update(atendimento, {
+        const result = await Usuario.update(atendimento, {
             where: {
                 id
             }
@@ -34,11 +32,11 @@ class RepositorieExercicio {
     }
 
     async Delete(id) {
-        return Atendimento.destroy({
+        return atendimento.destroy({
             where: { id }
         });
     }
 
 }
 
-module.exports = RepositorieExercicio
+module.exports = RepositorieAtendimentos
