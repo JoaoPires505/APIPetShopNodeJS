@@ -1,12 +1,15 @@
 const express = require('express')
-const router = require('./src/routes/petshop')
-
+const RouterClientes= require('./src/routes/cliente.js')
+const RouterCachorros= require('./src/routes/cachorro.js')
+const RouterAtendimentos= require('./src/routes/atendimento.js')
+const RouterUsuarios= require('./src/routes/usuario.js')
 const app = express()
 const port = 3000
 
-
 app.use(express.json())
-app.listen(port, () => {
-    console.log('servidor rodando na porta 3000')
+app.use(RouterCachorros, RouterClientes, RouterAtendimentos, RouterUsuarios)
 
+app.listen(port, () => {
+    console.log(`Servidor rodando na porta ${port}`)
 })
+    

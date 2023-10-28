@@ -1,15 +1,16 @@
-const ServicoExercicio = require("../services/cliente")
+const Servico = require("../services/atendente.js")
 
-const servico = new ServicoExercicio()
+const aervico = new Servico()   
 
-class ControllerExercicio {
-
+class Atendente {
     async PegarUm(req, res){
         try {
-            console.log(req.params.id)
+            if(req.session.permissao != 0){
+                throw new Error("Permissão negada")
+            }
             const result = await servico.PegarUm(req.params.id)
             res.status(200).json({
-                clientes: result
+                atendente: result
             })
         } catch (error) {
             console.log(error)
@@ -19,9 +20,12 @@ class ControllerExercicio {
     
     async PegarTodos(_, res){
         try {
+            if(req.session.permissao != 0){
+                throw new Error("Permissão negada")
+            }
             const result = await servico.PegarTodos()
             res.status(200).json({
-                clientes: result
+                atendentes: result
             })
         } catch (error) {
             console.log(error)
@@ -31,9 +35,12 @@ class ControllerExercicio {
 
     async Add(req, res){
         try {
-            const result = await servico.Add(req.body.clientes)
+            if(req.session.permissao != 0){
+                throw new Error("Permissão negada")
+            }
+            const result = await servico.Add(req.body.atendente)
             res.status(201).json({
-                clientes: result
+                atendente: result
             })
         } catch (error) {
             console.log(error)
@@ -43,9 +50,12 @@ class ControllerExercicio {
 
     async Update(req, res){
         try {
-            const result = await servico.Update(req.params.id, req.body.clientes)
+            if(req.session.permissao != 0){
+                throw new Error("Permissão negada")
+            }
+            const result = await servico.Update(req.params.id, req.body.atendente)
             res.status(200).json({
-                clientes: result
+                atendente: result
             })
         } catch (error) {
             console.log(error)
@@ -55,14 +65,16 @@ class ControllerExercicio {
 
     async Delete(req, res){
         try {
+            if(req.session.permissao != 0){
+                throw new Error("Permissão negada")
+            }
             await servico.Delete(req.params.id)
-            res.status(204)
+            res.status(204).json()
         } catch (error) {
             console.log(error)
             res.status(500).json({ message: error })
         }
     }
-
 }
 
-module.exports = ControllerExercicio
+module.exports = ControllerAtendente

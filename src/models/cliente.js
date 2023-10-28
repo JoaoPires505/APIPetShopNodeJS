@@ -1,7 +1,8 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes } = require('sequelize')
 const conexao = require('../database.js');
+const Cachorro = require('./cachorro.js');
 
-const Clientes = conexao.define('clientes', {
+const Cliente = conexao.define('clientes', {
     id: {
         primaryKey: true,
         autoIncrement: true,
@@ -13,12 +14,15 @@ const Clientes = conexao.define('clientes', {
     },
     telefone: {
         type: DataTypes.STRING,
-        allowNull: false,
-        unique: true
-    } 
+    }
 }, {
     createdAt: false,
     updatedAt: false
-});
+})
 
-module.exports = Clientes;
+Cachorro.belongsTo(Cliente, { foreignKey: 'id', allowNull: false });
+Cliente.hasMany(Cachorro, { foreignKey: 'id' });
+
+
+
+module.exports = Cliente
