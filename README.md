@@ -1,2 +1,2 @@
-# APIPetShopNodeJS
-crud com banco de dados. O tema é, obviamente, pet shop
+# APIPetShopNodeJs
+Repositório para estudo e criação de um Petshop 
