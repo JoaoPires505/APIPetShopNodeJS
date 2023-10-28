@@ -1,5 +1,5 @@
-const { DataTypes } = require('sequelize')
-const conexao = require('../database.js')
+const { DataTypes } = require('sequelize');
+const conexao = require('../database.js');
 
 const Clientes = conexao.define('clientes', {
     id: {
@@ -10,10 +10,15 @@ const Clientes = conexao.define('clientes', {
     nome: {
         type: DataTypes.STRING,
         allowNull: false
-    }
+    },
+    telefone: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true
+    } 
 }, {
     createdAt: false,
     updatedAt: false
-})
+});
 
-module.exports = Clientes
+module.exports = Clientes;

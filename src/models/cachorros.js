@@ -6,6 +6,7 @@ const Cachorros = conexao.define('cachorros', {
         primaryKey: true,
         autoIncrement: true,
         type: DataTypes.INTEGER
+        
     },
     nome: {
         type: DataTypes.STRING,
